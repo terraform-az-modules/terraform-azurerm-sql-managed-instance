@@ -4,7 +4,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   features {}
-  alias           = "peer"
+  alias = "peer"
 }
 
 data "azurerm_client_config" "current_client_config" {}
