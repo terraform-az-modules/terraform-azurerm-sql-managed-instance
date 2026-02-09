@@ -34,8 +34,8 @@ _No providers are explicitly defined in this example._
 | security_group | terraform-az-modules/nsg/azurerm | 1.0.2 |
 | security_group_secondary | terraform-az-modules/nsg/azurerm | 1.0.2 |
 | log-analytics | terraform-az-modules/log-analytics/azurerm | 1.0.2 |
-| vault | terraform-az-modules/key-vault/azurerm | 1.0.1 |
-| private_dns_zone | terraform-az-modules/private-dns/azurerm | 1.0.2 |
+| vault | terraform-az-modules/key-vault/azurerm | 1.0.4 |
+| private_dns_zone | terraform-az-modules/private-dns/azurerm | 1.0.4 |
 | vnet-peering | terraform-az-modules/vnet-peering/azurerm | 1.0.0 |
 | sql_instance | ../../ | n/a |
 

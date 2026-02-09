@@ -563,3 +563,25 @@ variable "logs" {
   default     = []
   description = "List of log configurations for diagnostic settings. Each object can specify either category_group or category."
 }
+
+##----------------------------------------------------------------
+## Transparent Data Encryption
+##----------------------------------------------------------------
+
+variable "enable_transparent_data_encryption" {
+  type        = bool
+  default     = false
+  description = "Enable Transparent Data Encryption for the SQL Managed Instance."
+}
+
+variable "managed_hsm_key_id" {
+  type        = string
+  default     = null
+  description = "To use customer managed keys from a managed HSM for transparent data encryption of SQL Managed Instance."
+}
+
+variable "auto_rotation_enabled" {
+  type        = bool
+  default     = false
+  description = "When enabled, the SQL Managed Instance will continuously check the key vault for any new versions of the key being used as the TDE protector. If a new version of the key is detected, the TDE protector on the SQL Managed Instance will be automatically rotated to the latest key version within 60 minutes."
+}

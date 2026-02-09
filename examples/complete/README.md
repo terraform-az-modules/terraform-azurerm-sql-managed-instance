@@ -26,13 +26,13 @@ _No providers are explicitly defined in this example._
 
 | Name               | Source                                                                                | Version |
 | ------------------ | ------------------------------------------------------------------------------------- | ------- |
-| `resource_group`   | terraform-az-modules/resource-group/azure                                             | 1.0.0   |
-| `vnet`             | terraform-az-modules/vnet/azure                                                       | 1.0.0   |
-| `subnet`           | terraform-az-modules/subnet/azure                                                     | 1.0.0   |
-| `security_group`   | terraform-az-modules/nsg/azure                                                        | 1.0.0   |
-| `log-analytics`    | terraform-az-modules/log-analytics/azure                                              | 1.0.0   |
-| `key_vault`        | terraform-az-modules/key-vault/azure                                                  | 1.0.0   |
-| `private_dns_zone` | terraform-az-modules/private-dns/azure                                                | 1.0.0   |
+| `resource_group`   | terraform-az-modules/resource-group/azure                                             | 1.0.3   |
+| `vnet`             | terraform-az-modules/vnet/azure                                                       | 1.0.3   |
+| `subnet`           | terraform-az-modules/subnet/azure                                                     | 1.0.1   |
+| `security_group`   | terraform-az-modules/nsg/azure                                                        | 1.0.2   |
+| `log-analytics`    | terraform-az-modules/log-analytics/azure                                              | 1.0.2   |
+| `key_vault`        | terraform-az-modules/key-vault/azure                                                  | 1.0.4   |
+| `private_dns_zone` | terraform-az-modules/private-dns/azure                                                | 1.0.4   |
 | `virtual-machine`  | `../../`                                                                              | n/a     |
 
 

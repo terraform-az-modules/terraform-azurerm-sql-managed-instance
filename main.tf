@@ -276,6 +276,19 @@ resource "azurerm_private_endpoint" "main" {
   }
 }
 
+##----------------------------------------------------------------------------
+## Transparent Data Encryption
+##----------------------------------------------------------------------------
+
+resource "azurerm_mssql_managed_instance_transparent_data_encryption" "main" {
+  count                 = var.enabled && var.enable_transparent_data_encryption ? 1 : 0
+  managed_instance_id   = azurerm_mssql_managed_instance.main[0].id
+  key_vault_key_id      = azurerm_key_vault_key.main[0].id
+  managed_hsm_key_id    = var.managed_hsm_key_id
+  auto_rotation_enabled = var.auto_rotation_enabled
+  depends_on            = [azurerm_key_vault_key.main, azurerm_mssql_managed_instance.main]
+}
+
 ##-----------------------------------------------------------------------------
 ## Diagnostic Setting - Deploy monitoring and logging for SQL Managed Instance
 ##-----------------------------------------------------------------------------

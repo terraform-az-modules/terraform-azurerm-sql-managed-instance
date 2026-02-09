@@ -57,3 +57,8 @@ output "mssql_vulnerability_assessment_id" {
   description = "The ID of the Vulnerability Assessment."
   value       = try(azurerm_mssql_managed_instance_vulnerability_assessment.main[0].id, null)
 }
+
+output "mssql_transparent_data_encryption_id" {
+  description = "The ID of the MSSQL encryption protector."
+  value       = try(azurerm_mssql_managed_instance_transparent_data_encryption.main[0].id, null)
+}
