@@ -63,10 +63,10 @@ resource "azurerm_mssql_managed_instance" "main" {
     }
   }
   dynamic "identity" {
-    for_each = var.identity == null ? [] : [var.identity]
+    for_each = var.identity != null || (var.encryption && var.identity == null) ? [1] : []
     content {
-      type         = identity.value.type
-      identity_ids = identity.value.identity_ids
+      type         = var.identity != null ? var.identity.type : "UserAssigned"
+      identity_ids = var.identity != null ? var.identity.identity_ids : [azurerm_user_assigned_identity.identity[0].id]
     }
   }
 }
@@ -107,10 +107,10 @@ resource "azurerm_mssql_managed_instance" "secondary" {
     }
   }
   dynamic "identity" {
-    for_each = var.identity == null ? [] : [var.identity]
+    for_each = var.identity != null || (var.encryption && var.identity == null) ? [1] : []
     content {
-      type         = identity.value.type
-      identity_ids = identity.value.identity_ids
+      type         = var.identity != null ? var.identity.type : "UserAssigned"
+      identity_ids = var.identity != null ? var.identity.identity_ids : [azurerm_user_assigned_identity.identity[0].id]
     }
   }
   depends_on = [azurerm_mssql_managed_instance.main]
@@ -121,7 +121,7 @@ resource "azurerm_mssql_managed_instance" "secondary" {
 resource "azurerm_mssql_managed_database" "main" {
   count                     = var.enabled ? 1 : 0
   managed_instance_id       = azurerm_mssql_managed_instance.main[0].id
-  name                      = var.resource_position_prefix ? format("mysql-db-%s", local.name) : format("%s-mysql-db", local.name)
+  name                      = var.resource_position_prefix ? format("sqldb-%s", local.name) : format("%s-sqldb", local.name)
   short_term_retention_days = var.short_term_retention_days
   tags                      = module.labels.tags
   dynamic "long_term_retention_policy" {
@@ -243,7 +243,7 @@ resource "azurerm_key_vault_key" "main" {
 ## Managed Identity - Deploy user-assigned identity for SQL Managed Instance encryption
 ##-----------------------------------------------------------------------------
 resource "azurerm_user_assigned_identity" "identity" {
-  count               = var.enabled && var.encryption != null ? 1 : 0
+  count               = var.enabled && var.encryption && var.identity == null ? 1 : 0
   location            = var.location
   name                = var.resource_position_prefix ? format("mid-sqlmi-%s", local.name) : format("%s-mid-sqlmi", local.name)
   resource_group_name = var.resource_group_name
@@ -294,7 +294,7 @@ resource "azurerm_mssql_managed_instance_transparent_data_encryption" "main" {
 ##-----------------------------------------------------------------------------
 resource "azurerm_monitor_diagnostic_setting" "sqlmi-diag" {
   count                      = var.enabled && var.enable_diagnostic ? 1 : 0
-  name                       = var.resource_position_prefix ? format("nic-diag-log-sqlmi-%s", local.name) : format("%s-nic-diag-log-sqlmi", local.name)
+  name                       = var.resource_position_prefix ? format("diag-log-sqlmi-%s", local.name) : format("%s-diag-log-sqlmi", local.name)
   target_resource_id         = azurerm_mssql_managed_instance.main[0].id
   storage_account_id         = var.storage_account_id
   log_analytics_workspace_id = var.log_analytics_workspace_id

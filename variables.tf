@@ -534,7 +534,7 @@ variable "endpoint_subnet_id" {
 variable "enable_diagnostic" {
   type        = bool
   default     = true
-  description = "Enable diagnostic settings for ACR."
+  description = "Enable diagnostic settings for SQl Managed Instance."
 }
 
 variable "log_analytics_workspace_id" {
@@ -552,7 +552,7 @@ variable "storage_account_id" {
 variable "metric_enabled" {
   type        = bool
   default     = true
-  description = "Boolean flag to specify whether Metrics should be enabled for the Container Registry. Defaults to true."
+  description = "Boolean flag to specify whether Metrics should be enabled for the SQL Managed Instance. Defaults to true."
 }
 
 variable "logs" {

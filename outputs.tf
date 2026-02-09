@@ -4,7 +4,7 @@ output "mssql_managed_instance_id" {
 }
 
 output "mssql_managed_instance_dns_zone" {
-  description = "The Dns Zone where the SQL Managed Instance is located."
+  description = "The DNS Zone where the SQL Managed Instance is located."
   value       = try(azurerm_mssql_managed_instance.main[0].dns_zone, null)
 }
 

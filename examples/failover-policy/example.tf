@@ -192,7 +192,6 @@ module "log-analytics" {
   log_analytics_workspace_sku = "PerGB2018"
   resource_group_name         = module.resource_group.resource_group_name
   location                    = module.resource_group.resource_group_location
-  log_analytics_workspace_id  = module.log-analytics.workspace_id
 }
 
 # ------------------------------------------------------------------------------
@@ -214,7 +213,7 @@ module "vault" {
   network_acls = {
     bypass         = "AzureServices"
     default_action = "Deny"
-    ip_rules       = ["0.0.0.0/0"]
+    ip_rules       = []
   }
   reader_objects_ids = {
     "Key Vault Administrator" = {
@@ -292,16 +291,4 @@ module "sql_instance" {
     mode          = "Automatic"
     grace_minutes = 60
   }
-  depends_on = [
-    module.vnet,
-    module.vnet_secondary,
-    module.subnet,
-    module.subnet_secondary,
-    module.security_group,
-    module.security_group_secondary,
-    module.private_dns_zone,
-    module.vault,
-    module.log-analytics,
-    module.vnet-peering
-  ]
 }

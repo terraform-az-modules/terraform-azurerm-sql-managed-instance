@@ -102,7 +102,6 @@ module "log-analytics" {
   log_analytics_workspace_sku = "PerGB2018"
   resource_group_name         = module.resource_group.resource_group_name
   location                    = module.resource_group.resource_group_location
-  log_analytics_workspace_id  = module.log-analytics.workspace_id
 }
 
 # ------------------------------------------------------------------------------
@@ -124,7 +123,7 @@ module "vault" {
   network_acls = {
     bypass         = "AzureServices"
     default_action = "Deny"
-    ip_rules       = ["0.0.0.0/0"]
+    ip_rules       = []
   }
   reader_objects_ids = {
     "Key Vault Administrator" = {
