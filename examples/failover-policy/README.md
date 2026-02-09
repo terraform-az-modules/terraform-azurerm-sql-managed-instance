@@ -2,8 +2,7 @@
 
 # Azure MSSQL Managed Instance
 
-This example demonstrates how to deploy an Azure SQL Managed Instance with a complete infrastructure setup including virtual network, subnets, security groups, Key Vault, private DNS zones, and Log Analytics workspace.
-
+This example demonstrates how to deploy an Azure SQL Managed Instance with a Failover Group for disaster recovery.
 
 ---
 
@@ -24,17 +23,21 @@ _No providers are explicitly defined in this example._
 
 ## 📦 Modules
 
-| Name               | Source                                                                                | Version |
-| ------------------ | ------------------------------------------------------------------------------------- | ------- |
-| `resource_group`   | terraform-az-modules/resource-group/azure                                             | 1.0.3   |
-| `vnet`             | terraform-az-modules/vnet/azure                                                       | 1.0.3   |
-| `subnet`           | terraform-az-modules/subnet/azure                                                     | 1.0.1   |
-| `security_group`   | terraform-az-modules/nsg/azure                                                        | 1.0.2   |
-| `log-analytics`    | terraform-az-modules/log-analytics/azure                                              | 1.0.2   |
-| `key_vault`        | terraform-az-modules/key-vault/azure                                                  | 1.0.4   |
-| `private_dns_zone` | terraform-az-modules/private-dns/azure                                                | 1.0.4   |
-| `virtual-machine`  | `../../`                                                                              | n/a     |
-
+| Name | Source | Version |
+|------|--------|---------|
+| resource_group | terraform-az-modules/resource-group/azurerm | 1.0.3 |
+| resource_group_secondary | terraform-az-modules/resource-group/azurerm | 1.0.3 |
+| vnet | terraform-az-modules/vnet/azurerm | 1.0.3 |
+| vnet_secondary | terraform-az-modules/vnet/azurerm | 1.0.3 |
+| subnet | terraform-az-modules/subnet/azurerm | 1.0.1 |
+| subnet_secondary | terraform-az-modules/subnet/azurerm | 1.0.1 |
+| security_group | terraform-az-modules/nsg/azurerm | 1.0.2 |
+| security_group_secondary | terraform-az-modules/nsg/azurerm | 1.0.2 |
+| log-analytics | terraform-az-modules/log-analytics/azurerm | 1.0.2 |
+| vault | terraform-az-modules/key-vault/azurerm | 1.0.4 |
+| private_dns_zone | terraform-az-modules/private-dns/azurerm | 1.0.4 |
+| vnet-peering | terraform-az-modules/vnet-peering/azurerm | 1.0.0 |
+| sql_instance | ../../ | n/a |
 
 ---
 
