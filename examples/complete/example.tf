@@ -172,4 +172,5 @@ module "sql_instance" {
   endpoint_subnet_id         = module.subnet.subnet_ids.subnet1
   private_dns_zone_ids       = module.private_dns_zone.private_dns_zone_ids.sql_server
   log_analytics_workspace_id = module.log-analytics.workspace_id
+  proxy_override             = "Redirect"
 }

@@ -10,6 +10,7 @@ variable "enabled" {
 
 variable "name" {
   type        = string
+  default     = null
   description = "Base name for resources."
 }
 
@@ -215,21 +216,21 @@ variable "timezone_id" {
 }
 
 variable "secondary_location" {
-  description = "Azure region for secondary SQL Managed Instance (must be different from primary)"
   type        = string
   default     = null
+  description = "Azure region for secondary SQL Managed Instance (must be different from primary)"
 }
 
 variable "secondary_subnet_id" {
-  description = "Subnet ID for secondary SQL Managed Instance"
   type        = string
   default     = null
+  description = "Subnet ID for secondary SQL Managed Instance"
 }
 
 variable "secondary_resource_group_name" {
-  description = "Resource group name for secondary instance (optional, defaults to primary RG)"
   type        = string
   default     = null
+  description = "Resource group name for secondary instance (optional, defaults to primary RG)"
 }
 
 ##-----------------------------------------------------------------------------
@@ -250,7 +251,6 @@ variable "administrator_login_password" {
 }
 
 variable "azure_active_directory_administrator" {
-  description = "Azure Active Directory administrator configuration."
   type = object({
     login_username                      = string
     object_id                           = string
@@ -258,16 +258,17 @@ variable "azure_active_directory_administrator" {
     azuread_authentication_only_enabled = optional(bool, false)
     tenant_id                           = optional(string)
   })
-  default = null
+  default     = null
+  description = "Azure Active Directory administrator configuration."
 }
 
 variable "identity" {
-  description = "Managed identity configuration."
   type = object({
     type         = string
     identity_ids = optional(list(string))
   })
-  default = null
+  default     = null
+  description = "Managed identity configuration."
 }
 
 ##-----------------------------------------------------------------------------
@@ -281,23 +282,23 @@ variable "short_term_retention_days" {
 }
 
 variable "long_term_retention_policy" {
-  description = "Long-term backup retention policy for the SQL Managed Instance database."
   type = object({
     monthly_retention = optional(string)
     week_of_year      = optional(number)
     weekly_retention  = optional(string)
     yearly_retention  = optional(string)
   })
-  default = null
+  default     = null
+  description = "Long-term backup retention policy for the SQL Managed Instance database."
 }
 
 variable "point_in_time_restore" {
-  description = "Point-in-time restore configuration for the SQL Managed Instance database."
   type = object({
     restore_point_in_time = string
     source_database_id    = string
   })
-  default = null
+  default     = null
+  description = "Point-in-time restore configuration for the SQL Managed Instance database."
 }
 
 ##-----------------------------------------------------------------------------
@@ -323,12 +324,12 @@ variable "readonly_endpoint_failover_policy_enabled" {
 }
 
 variable "read_write_endpoint_failover_policy" {
-  description = "Read-write endpoint failover policy configuration."
   type = object({
     mode          = string
     grace_minutes = number
   })
-  default = null
+  default     = null
+  description = "Read-write endpoint failover policy configuration."
 }
 
 ##-----------------------------------------------------------------------------
@@ -374,8 +375,8 @@ variable "storage_endpoint" {
 variable "storage_account_access_key" {
   type        = string
   default     = null
-  sensitive   = true
   description = "Access key for the storage account used for audit logs."
+  sensitive   = true
 }
 
 ##-----------------------------------------------------------------------------
@@ -395,14 +396,14 @@ variable "start_stop_timezone_id" {
 }
 
 variable "start_stop_schedules" {
-  description = "Start/stop schedule configuration for the SQL Managed Instance."
   type = object({
     start_day  = string
     start_time = string # HH:MM
     stop_day   = string
     stop_time  = string # HH:MM
   })
-  default = null
+  default     = null
+  description = "Start/stop schedule configuration for the SQL Managed Instance."
 }
 
 ##-----------------------------------------------------------------------------
@@ -424,18 +425,18 @@ variable "va_storage_container_path" {
 variable "va_storage_account_access_key" {
   type        = string
   default     = null
-  sensitive   = true
   description = "Storage account access key used to write vulnerability assessment results."
+  sensitive   = true
 }
 
 variable "va_recurring_scans" {
-  description = "Recurring scans configuration for vulnerability assessment."
   type = object({
     enabled                   = bool
     email_subscription_admins = bool
     emails                    = list(string)
   })
-  default = null
+  default     = null
+  description = "Recurring scans configuration for vulnerability assessment."
 }
 
 ##-----------------------------------------------------------------------------
@@ -477,21 +478,21 @@ variable "key_vault_rbac_auth_enabled" {
 }
 
 variable "key_expiration_date" {
-  description = "Expiration date for the Key Vault key in ISO 8601 format (for example 2028-12-31T23:59:59Z)."
   type        = string
   default     = null
+  description = "Expiration date for the Key Vault key in ISO 8601 format (for example 2028-12-31T23:59:59Z)."
 }
 
 variable "key_type" {
-  description = "Key type to create in Key Vault (for example RSA or RSA-HSM)."
   type        = string
   default     = "RSA-HSM"
+  description = "Key type to create in Key Vault (for example RSA or RSA-HSM)."
 }
 
 variable "key_size" {
-  description = "Size of the RSA key in bits (for example 2048, 3072, 4096)."
   type        = number
   default     = 2048
+  description = "Size of the RSA key in bits (for example 2048, 3072, 4096)."
 }
 
 variable "encryption" {
@@ -517,13 +518,14 @@ variable "private_dns_zone_ids" {
 }
 
 variable "manual_connection" {
-  description = "Indicates whether the connection is manual"
   type        = bool
   default     = false
+  description = "Indicates whether the connection is manual"
 }
 
 variable "endpoint_subnet_id" {
   type        = string
+  default     = null
   description = "Subnet ID for Private Endpoint (must be non-delegated subnet)"
 }
 
