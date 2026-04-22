@@ -22,7 +22,7 @@ module "resource_group" {
 # ------------------------------------------------------------------------------
 module "vnet" {
   source              = "terraform-az-modules/vnet/azurerm"
-  version             = "1.0.3"
+  version             = "1.0.4"
   name                = "core"
   environment         = "dev"
   label_order         = ["name", "environment", "location"]
@@ -36,7 +36,7 @@ module "vnet" {
 # ------------------------------------------------------------------------------
 module "subnet" {
   source               = "terraform-az-modules/subnet/azurerm"
-  version              = "1.0.1"
+  version              = "1.0.2"
   environment          = "dev"
   label_order          = ["name", "environment", "location"]
   resource_group_name  = module.resource_group.resource_group_name
@@ -95,7 +95,7 @@ module "security_group" {
 # ------------------------------------------------------------------------------
 module "log-analytics" {
   source                      = "terraform-az-modules/log-analytics/azurerm"
-  version                     = "1.0.3"
+  version                     = "2.0.0"
   name                        = "core"
   environment                 = "dev"
   label_order                 = ["name", "environment", "location"]
@@ -140,7 +140,7 @@ module "vault" {
 # ------------------------------------------------------------------------------
 module "private_dns_zone" {
   source              = "terraform-az-modules/private-dns/azurerm"
-  version             = "1.0.4"
+  version             = "1.0.6"
   name                = "core"
   environment         = "dev"
   resource_group_name = module.resource_group.resource_group_name
