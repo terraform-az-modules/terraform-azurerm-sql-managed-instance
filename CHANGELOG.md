@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.0] - 2026-04-22
+### :wrench: Chores
+- [`720daff`](https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/commit/720dafff03282a22ab4702f5503ef7eb94a7ebb7) - **deps**: Bump terraform-az-modules/log-analytics/azurerm *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`58172af`](https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/commit/58172aff3a6f7cb66a064bc95f6a6019b0addb6f) - **deps**: Bump terraform-az-modules/key-vault/azurerm *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+
 ## [v2.0.1] - 2026-04-22
 ### :wrench: Chores
 - [`04af464`](https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/commit/04af464582dbea50cb6ff1dccd260fc612c9d36b) - **deps**: Bump terraform-az-modules/private-dns/azurerm *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
@@ -32,3 +38,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.2]: https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/compare/v1.0.1...v1.0.2
 [v1.0.4]: https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/compare/v1.0.3...v1.0.4
 [v2.0.1]: https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/compare/v2.0.0...v2.0.1
+[v3.0.0]: https://github.com/terraform-az-modules/terraform-azurerm-sql-managed-instance/compare/v2.0.1...v3.0.0
